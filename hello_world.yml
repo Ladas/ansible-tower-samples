@@ -8,7 +8,7 @@
       state: '{{file_state}}'
   - name: print
     debug:
-      msg: "vars: {{hostvars}}"
+      msg: "vars: {{hostvars[inventory_hostname]}}"
 - hosts: all
   tasks:
   - name: create a file on a remote machine
@@ -17,7 +17,7 @@
       state: '{{file_state}}'
   - name: print
     debug:
-      msg: "vars: {{hostvars}}"
+      msg: "vars: {{hostvars[inventory_hostname]}}"
 
 - hosts: web
   tasks:
