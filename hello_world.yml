@@ -1,7 +1,31 @@
-- name: Hello World Sample
-  hosts: all
+---
+- hosts: all
   tasks:
-    - name: Hello Message
-      debug:
-        msg: "Hello World!"
+  - name: create a file on a remote machine
+    file:
+      dest: /tmp/file
+      state: '{{file_state}}'
+  - name: print
+    debug:
+      msg: "vars: {{hostvars}}"
 
+- hosts: web
+  tasks:
+  - name: create file on web machines
+    file:
+      dest: /tmp/web-file
+      state: '{{file_state}}'
+
+- hosts: all:!db
+  tasks:
+  - name: create file on web machines
+    file:
+      dest: /tmp/web-not-db-file
+      state: '{{file_state}}'
+
+- hosts: all:&backup:!web
+  tasks:
+  - name: create file on web machines
+    file:
+      dest: /tmp/backup-file
+      state: '{{file_state}}'
