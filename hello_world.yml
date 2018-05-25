@@ -1,4 +1,14 @@
 ---
+- hosts: localhost
+  connection: local
+  tasks:
+  - name: create a file on a remote machine
+    file:
+      dest: /tmp/file
+      state: '{{file_state}}'
+  - name: print
+    debug:
+      msg: "vars: {{hostvars}}"
 - hosts: all
   tasks:
   - name: create a file on a remote machine
