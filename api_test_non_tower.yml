@@ -1,0 +1,13 @@
+- hosts: localhost
+  connection: local
+  gather_facts: no
+  tasks:
+  - name: Change instances power state
+    ec2:
+      instance_tags:
+          Name: ladas_ansible_test_1
+      state: running
+  - name: Get instances facts
+    ec2_instance_facts:
+      filters:
+          "tag:Name": ladas_ansible_test_1
