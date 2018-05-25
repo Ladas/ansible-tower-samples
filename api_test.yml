@@ -1,4 +1,5 @@
 - hosts: all
+  gather_facts: no
   tasks:
   - name: Change instances power state
     ec2:
