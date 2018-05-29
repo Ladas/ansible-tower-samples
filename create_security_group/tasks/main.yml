@@ -25,4 +25,4 @@
   register: created_security_group_var
 - set_stats:
     data:
-      created_security_group: "{{ created_security_group }}"
+      created_security_group: "{{ created_security_group_var }}"
