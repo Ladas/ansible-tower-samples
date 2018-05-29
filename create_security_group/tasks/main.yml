@@ -2,8 +2,8 @@
 - name: Create a security group
   local_action:
     module: ec2_group
-    name: "{{ security_group_name | default('ladas_ansible_test_1') }}"
-    description: "{{ security_group_description | default('') }}"
+    name: "{{ security_group_name | default('ladas_ansible_test_1_sc_name') }}"
+    description: "{{ security_group_description | default('ladas_ansible_test_1_sc_description') }}"
     region: "{{ region }}"
     rules: # todo this ca go from input
       - proto: tcp
