@@ -1,0 +1,13 @@
+---
+# tasks file for create_tag
+- name: Add tags to Instance(s)
+    hosts: local
+    connection: local
+    gather_facts: False
+    tasks:
+    - name: Add tags to Instance(s)
+        local_action: ec2_tag resource={{ item.id }} region={{ region }} state=present
+        with_items: created_instances.instances
+        args:
+          tags:
+            Name: ladas_ansible_test_1

@@ -1,0 +1,23 @@
+---
+- name: Provision EC2 Instance
+    hosts: local
+    connection: local
+    gather_facts: False
+    tasks:
+    - debug:
+        - msg: "Created security group var{{ created_security_group_var }}"
+    - debug:
+        - msg: "Created security group {{ created_security_group }}"
+    - name: Provision EC2 Instance
+        local_action: ec2
+                      group={{ created_security_group }}
+                      instance_type={{ instance_type}}
+                      image={{ image }}
+                      wait=true
+                      region={{ region }}
+                      keypair={{ keypair }}
+                      count={{ count | default(1) }}
+        register: created_instances_var
+    - set_stats:
+        data:
+            created_instances: {{ created_instances_var }}
