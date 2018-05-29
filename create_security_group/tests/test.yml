@@ -1,5 +1,7 @@
 ---
-- hosts: localhost
-  remote_user: root
+- name: Create a security group
+  hosts: localhost
+  connection: local
+  gather_facts: False
   roles:
     - create_security_group
