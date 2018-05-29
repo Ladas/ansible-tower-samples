@@ -1,8 +1,8 @@
 ---
 - debug:
-  - msg: "Created security group {{ created_security_group }}"
+    msg: "Created security group {{ created_security_group }}"
 - debug:
-  - msg: "Created security group var{{ created_security_group_var }}"
+    msg: "Created security group var{{ created_security_group_var }}"
 - name: Provision EC2 Instance
   local_action: ec2
                 group={{ created_security_group }}
